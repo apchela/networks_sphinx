@@ -1,0 +1,151 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Использование в документации &mdash; документация Networks information 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Ключевые термины" href="terms.html" />
+    <link rel="prev" title="Основные ошибки" href="troubleshooting.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Networks information
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое OSI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html">7 уровней модели OSI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Основные ошибки</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Использование в документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terms.html">Ключевые термины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">Источники</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Networks information</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Что такое OSI</a></li>
+      <li class="breadcrumb-item active">Использование в документации</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/osi/best_practices.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="id1">
+<h1>Использование в документации<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
+<p>В технических статьях и документах уровни OSI почти всегда обозначают как L1, L2, &lt;…&gt; L7.</p>
+<p>Такой формат удобен, потому что:</p>
+<ul class="simple">
+<li><p>он универсален, независимо от вендора;</p></li>
+<li><p>быстро указывает, на каком уровне работает устройство или протокол;</p></li>
+<li><p>экономит время при обсуждении («это проблема L3» вместо длинного описания «сетевой уровень»).</p></li>
+</ul>
+<p><strong>Примеры из документации</strong>:</p>
+<ul class="simple">
+<li><p>L2 switch — коммутатор, работающий на канальном уровне (передает кадры по MAC-адресам).</p></li>
+<li><p>L3 switch / router — устройство, работающее на сетевом уровне (маршрутизация по IP-адресам).</p></li>
+<li><p>L4 firewall — фильтрация по TCP/UDP-портам (транспортный уровень).</p></li>
+<li><p>L7 firewall / WAF — анализ HTTP/HTTPS-запросов (прикладной уровень).</p></li>
+</ul>
+<p>Производители сетевого оборудования (Cisco, Juniper, MikroTik и др.) часто указывают в документации:</p>
+<p>«Этот модуль работает на уровне L2» — значит, устройство не умеет маршрутизировать IP, а только пересылает кадры.</p>
+<p>«L3 функционал» — значит, устройство может выполнять IP-маршрутизацию.</p>
+<p>«L7 inspection» — глубокая проверка пакетов до уровня приложений (DPI, контроль трафика по типам).</p>
+<p><strong>Пример</strong>:</p>
+<p>Cisco в документации к маршрутизатору может указать, что он поддерживает L3 (IP-маршрутизация) и L4 (фильтрация TCP/UDP-портов), но не L7 (нет анализа приложений).</p>
+<p>В IT-поддержке часто пишут: «проблема на уровне L2». Это значит, что ошибка в локальной сети: обрыв кабеля, проблема с Wi-Fi, дублирование MAC-адресов.</p>
+<p>Если пишут: «ошибка L7» — то проблема скорее всего в приложении (например, сервер отвечает 500 Internal Server Error).</p>
+<p>Такой язык экономит время: не нужно объяснять длинно, специалисты сразу понимают контекст.</p>
+<p>Стандарты IEEE и IETF часто указывают, на каком уровне OSI действует протокол. Например:</p>
+<ul class="simple">
+<li><p>Ethernet = L2</p></li>
+<li><p>IPv4 = L3</p></li>
+<li><p>TCP = L4</p></li>
+<li><p>HTTP = L7</p></li>
+</ul>
+<p>В учебниках и сертификационных курсах (CCNA, CompTIA Network+) OSI — это «скелет», на который навешиваются все протоколы. Это позволяет новичкам сразу понимать: где работает протокол, какие задачи он решает и как взаимодействует с другими.</p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="troubleshooting.html" class="btn btn-neutral float-left" title="Основные ошибки" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="terms.html" class="btn btn-neutral float-right" title="Ключевые термины" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anastasia Pchela. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

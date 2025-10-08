@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>7 уровней модели OSI &mdash; документация Networks information 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Основные ошибки" href="troubleshooting.html" />
+    <link rel="prev" title="История создания" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Networks information
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое OSI</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">7 уровней модели OSI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#physical">1. Физический уровень (Physical)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-link">2. Канальный уровень (Data Link)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#network">3. Сетевой уровень (Network)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#transport">4. Транспортный уровень (Transport)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#session">5. Сеансовый уровень (Session)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#presentation">6. Представительский уровень (Presentation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#application">7. Прикладной уровень (Application)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Как данные проходят между компьютерами</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">Как это помогает на практике</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Основные ошибки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html">Использование в документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="terms.html">Ключевые термины</a></li>
+<li class="toctree-l2"><a class="reference internal" href="references.html">Источники</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Networks information</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Что такое OSI</a></li>
+      <li class="breadcrumb-item active">7 уровней модели OSI</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/osi/implementation.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="osi">
+<h1>7 уровней модели OSI<a class="headerlink" href="#osi" title="Ссылка на этот заголовок"></a></h1>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Уровень</strong></p></td>
+<td><p><strong>Назначение</strong></p></td>
+<td><p><strong>Примеры</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Физический</p></td>
+<td><p>Сигналы, провода, биты</p></td>
+<td><p>Кабели, оптика</p></td>
+</tr>
+<tr class="row-odd"><td><p>Канальный</p></td>
+<td><p>MAC-адреса, фреймы</p></td>
+<td><p>Ethernet, PPP</p></td>
+</tr>
+<tr class="row-even"><td><p>Сетевой</p></td>
+<td><p>Адресация, маршрутизация</p></td>
+<td><p>IP, ICMP</p></td>
+</tr>
+<tr class="row-odd"><td><p>Транспортный</p></td>
+<td><p>Доставка и контроль ошибок</p></td>
+<td><p>TCP, UDP</p></td>
+</tr>
+<tr class="row-even"><td><p>Сеансовый</p></td>
+<td><p>Управление соединением</p></td>
+<td><p>NetBIOS, RPC</p></td>
+</tr>
+<tr class="row-odd"><td><p>Представительный</p></td>
+<td><p>Кодировка, шифрование</p></td>
+<td><p>TLS, JPEG, MP3</p></td>
+</tr>
+<tr class="row-even"><td><p>Прикладной</p></td>
+<td><p>Взаимодействие с ПО</p></td>
+<td><p>HTTP, FTP, SMTP</p></td>
+</tr>
+</tbody>
+</table>
+<section id="physical">
+<h2>1. Физический уровень (Physical)<a class="headerlink" href="#physical" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: передает «сырые» биты по физическим средам — электрические импульсы, свет в оптоволокне, радиосигнал в Wi-Fi. Определяет кабели, разъемы, скорость передачи, уровни напряжений.</p>
+<p><strong>Примеры</strong>: витая пара (Ethernet кабель), оптоволокно, Wi-Fi-антенны, концентраторы (hubs).</p>
+<p><strong>Если проблемы на этом уровне</strong>: нет физического сигнала — кабель обрыв, поврежден разъем, плохая коаксиальная линия, слабый сигнал Wi-Fi.</p>
+</section>
+<section id="data-link">
+<h2>2. Канальный уровень (Data Link)<a class="headerlink" href="#data-link" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: обеспечивает передачу между соседними узлами в одной сети (между устройствами, соединенными физически). Управляет физическими адресами (MAC), формирует кадры, проверяет ошибки на уровне канала.</p>
+<p><strong>Примеры/протоколы</strong>: Ethernet (Wi-Fi тоже относится к этому уровню), ARP (сопоставление IP → MAC).</p>
+<p><strong>Если проблемы на этом уровне</strong>: проблемы с подключением внутри LAN, плохой Wi-Fi, устройство не видит соседей в сети.</p>
+</section>
+<section id="network">
+<h2>3. Сетевой уровень (Network)<a class="headerlink" href="#network" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: отвечает за логическую адресацию и маршрутизацию — как пакет добирается между сетями (между машинами в разных локальных сетях или в интернете).</p>
+<p><strong>Основной протокол</strong>: IP (IPv4, IPv6). Также — ICMP (инструменты ping/traceroute).</p>
+<p><strong>Если проблемы на этом уровне</strong>: пакеты не проходят между сетями, ping не проходит, traceroute показывает обрывы.</p>
+</section>
+<section id="transport">
+<h2>4. Транспортный уровень (Transport)<a class="headerlink" href="#transport" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: обеспечивает надежную или быструю передачу между конечными точками (end-to-end). Разбивает данные на части, нумерует их, собирает на приеме, управляет скоростью и проверяет целостность.</p>
+<p><strong>Основные протоколы</strong>: TCP (надежный, с подтверждениями и контролем потока), UDP (быстрый, без гарантий доставки).</p>
+<p><strong>Если проблемы на этом уровне</strong>: приложения могут подвисать, данные приходят некорректно или вовсе не доходят. Типичные инструменты диагностики: netstat, telnet, проверка открытых портов.</p>
+</section>
+<section id="session">
+<h2>5. Сеансовый уровень (Session)<a class="headerlink" href="#session" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: устанавливает, поддерживает и завершает сессии — логические сеансы общения между приложениями (контроль диалога, восстановление после ошибок).</p>
+<p><strong>Примеры</strong>: протоколы удаленного вызова (RPC), управление сессиями в некоторых старых корпоративных системах.</p>
+<p><strong>Почему редко заметен</strong>: в современной сети многие функции сеансового уровня выполняют сами приложения или транспортный уровень (TCP).</p>
+</section>
+<section id="presentation">
+<h2>6. Представительский уровень (Presentation)<a class="headerlink" href="#presentation" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: отвечает за представление данных — перевод форматов, шифрование/дешифрование и сжатие/распаковку.</p>
+<p><strong>Примеры</strong>: TLS/SSL (шифрование для HTTPS), кодировки (UTF-8), компрессия.</p>
+<p><strong>Пояснение термина</strong>: шифрование обеспечивает конфиденциальность, а сжатие уменьшает объем передаваемых данных.</p>
+</section>
+<section id="application">
+<h2>7. Прикладной уровень (Application)<a class="headerlink" href="#application" title="Ссылка на этот заголовок"></a></h2>
+<p><strong>Что делает</strong>: предоставляет интерфейс для приложений, чтобы они могли отправлять и получать данные по сети.</p>
+<p><strong>Примеры</strong>: веб-браузеры (HTTP), почтовые программы (SMTP), FTP-клиенты, SSH, DNS.</p>
+<p><strong>Что важно понимать</strong>: здесь формируются сами сообщения — что отправляется (запрос страницы, письмо и т.д.).</p>
+</section>
+<section id="id1">
+<h2>Как данные проходят между компьютерами<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Открывается веб-страница:</p>
+<ul class="simple">
+<li><p>Прикладной уровень (7): браузер формирует HTTP-запрос.</p></li>
+<li><p>Представительский (6): если сайт через HTTPS — содержимое шифруется (TLS).</p></li>
+<li><p>Сеансовый (5): устанавливается сессия (логика «разговоров» между клиентом и сервером).</p></li>
+<li><p>Транспортный (4): TCP разбивает данные на сегменты, пронумеровывает, добавляет порт назначения (например, 443). Начинается TCP-handshake.</p></li>
+<li><p>Сетевой (3): к каждому сегменту добавляется IP-заголовок с адресами отправителя и получателя — получается пакет. Маршрутизаторы по пути направляют пакет.</p></li>
+<li><p>Канальный (2): пакет помещается в кадр с MAC-адресами соседних устройств. Кадры передаются внутри сегмента сети.</p></li>
+<li><p>Физический (1): кадр преобразуется в электрические/оптические сигналы и уходит по кабелю или радиоволнам.</p></li>
+</ul>
+<p>На приеме все операции выполняются в обратном порядке (декапсуляция): физический уровень → декодирование кадра → проверка IP → сборка TCP → расшифровка TLS → показ страницы в браузере.</p>
+</section>
+<section id="id2">
+<h2>Как это помогает на практике<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>Диагностика сети: если ping проходит — сетевой (IP) уровень работает; если ping не проходит, но локальная сеть есть — проблема может быть на сетевом/маршрутизации.</p></li>
+<li><p>Понимание безопасности: файрволлы и правила часто опираются на порты (транспортный уровень) и IP-адреса (сетевой уровень).</p></li>
+<li><p>Проектирование сети: выбор между коммутатором и маршрутизатором, настройка VLAN — все связано с канальным и сетевым уровнями.</p></li>
+<li><p>Оптимизация: если сайт медленно отвечает, нужно понять, где задержка: приложение, TCP (потеря пакетов, повторная передача), маршрутизация или физика (плохой канал).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="overview.html" class="btn btn-neutral float-left" title="История создания" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Основные ошибки" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anastasia Pchela. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

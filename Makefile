@@ -20,4 +20,4 @@ help:
 	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
 
 run:
-	python -m http.server 8000 --directory build/html
+	sphinx-autobuild source build/html
