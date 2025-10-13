@@ -1,0 +1,222 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как настроить VPS-сервер &mdash; документация Networks information 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="prev" title="Для чего используется VPS?" href="overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Networks information
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое VPS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Для чего используется VPS?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Как настроить VPS-сервер</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. Выбор провайдера</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2. Регистрация</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssh">3. Подключение к серверу по SSH</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4. Настроить SSH для нового пользователя</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#root">5. Запретить вход под root (для безопасности)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Networks information</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Что такое VPS</a></li>
+      <li class="breadcrumb-item active">Как настроить VPS-сервер</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/vps/implementation.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="vps">
+<h1>Как настроить VPS-сервер<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>1. Выбор провайдера<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Лучше всего выбирать ближайшую локацию сервера — быстрее отклик.
+Для легких проектов будет достаточно 1–2 ГБ ОЗУ объема RAM и CPU.
+Обязательно наличие SSH-доступа, обычно он включен по умолчанию.</p>
+</section>
+<section id="id2">
+<h2>2. Регистрация<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>Создать новый сервер (обычно кнопка “Create Droplet”, “New Instance” или “Create Server”).</p></li>
+<li><p>Выберать операционную систему — самая стабильная и популярная Ubuntu 22.04 LTS.</p></li>
+<li><p>Указать размер (например, 1vCPU, 1GB RAM — достаточно для тестов).</p></li>
+<li><p>Добавить свой SSH-ключ.</p></li>
+<li><p>Создать сервер.</p></li>
+</ul>
+</section>
+<section id="ssh">
+<h2>3. Подключение к серверу по SSH<a class="headerlink" href="#ssh" title="Ссылка на этот заголовок"></a></h2>
+<ul>
+<li><p>Ввести команду в терминале:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">root</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>После входа под root-правами нужно сделать первичную настройку:</p>
+<ul>
+<li><p>Обновить пакеты:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
+</pre></div>
+</div>
+</li>
+<li><p>Добавить нового пользователя (чтобы не работать напрямую от root):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="n">admin</span>
+</pre></div>
+</div>
+</li>
+<li><p>Задать пароль и подтвердить. Дать права администратора:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="n">admin</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="id3">
+<h2>4. Настроить SSH для нового пользователя<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<ul>
+<li><p>Создать для него SSH-директорию:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">admin</span><span class="o">/.</span><span class="n">ssh</span>
+<span class="n">chmod</span> <span class="mi">700</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">admin</span><span class="o">/.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Скопировать публичный ключ в файл:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">nano</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">admin</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Вставить туда содержимое id_ed25519.pub и сохранить.</p>
+<ul>
+<li><p>Установить права:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">600</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">admin</span><span class="o">/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">authorized_keys</span>
+<span class="n">chown</span> <span class="o">-</span><span class="n">R</span> <span class="n">admin</span><span class="p">:</span><span class="n">admin</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">admin</span><span class="o">/.</span><span class="n">ssh</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</section>
+<section id="root">
+<h2>5. Запретить вход под root (для безопасности)<a class="headerlink" href="#root" title="Ссылка на этот заголовок"></a></h2>
+<ul>
+<li><p>Открыть SSH-конфигурацию через консоль:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+</pre></div>
+</div>
+</li>
+<li><p>Изменить строки:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermitRootLogin</span> <span class="n">no</span>
+<span class="n">PasswordAuthentication</span> <span class="n">no</span>
+</pre></div>
+</div>
+</li>
+<li><p>Перезапустить SSH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">ssh</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Теперь вход будет возможен только по ключу от пользователя admin.</p>
+<ul>
+<li><p>Проверить соединение. Выйти из сервера (exit) и подключиться заново:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">admin</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
+</pre></div>
+</div>
+</li>
+</ul>
+<p>Если все работает — значит сервер готов к использованию.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="overview.html" class="btn btn-neutral float-left" title="Для чего используется VPS?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anastasia Pchela. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

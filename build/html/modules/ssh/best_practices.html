@@ -1,0 +1,251 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="ru" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Как создать свой SSH-ключ (на примере GitHab) &mdash; документация Networks information 1.0.0</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
+    <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Частые проблемы и их решения" href="troubleshooting.html" />
+    <link rel="prev" title="Основная информация" href="implementation.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            Networks information
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
+              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое SSH</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
+<li class="toctree-l2"><a class="reference internal" href="implementation.html">Основная информация</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Как создать свой SSH-ключ (на примере GitHab)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">1. Проверить наличие ключей</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2. Генерация ключа</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3. Проверить права доступа на ключи</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#ssh-agent">4. Добавить ключ в ssh-agent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id6">5. Скопировать открытый ключ в буфер обмена</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#github">6. Добавить ключ в GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">Рекомендации по безопасности</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Частые проблемы и их решения</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">Networks information</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Навигация по страницам">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="index.html">Что такое SSH</a></li>
+      <li class="breadcrumb-item active">Как создать свой SSH-ключ (на примере GitHab)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/modules/ssh/best_practices.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ssh-githab">
+<h1>Как создать свой SSH-ключ (на примере GitHab)<a class="headerlink" href="#ssh-githab" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>1. Проверить наличие ключей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<p>Открыть терминал (Linux/macOS) или Git Bash/WSL (Windows). Ввести команду:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ls</span> <span class="o">-</span><span class="n">la</span> <span class="o">~/.</span><span class="n">ssh</span>
+</pre></div>
+</div>
+<p>О наличии ключа говорит id_ed25519 / id_rsa и <a href="#id2"><span class="problematic" id="id3">*</span></a>.pub.</p>
+<img alt="../../_images/consol.png" src="../../_images/consol.png" />
+<p>Если ключ уже есть, можно использовать его (если он не привязан к другому аккаунту), или
+сгенерировать новую пару с другим именем (для GitHub лучше сделать отдельный ключ).</p>
+</section>
+<section id="id4">
+<h2>2. Генерация ключа<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
+<p>Ed25519 — современный, быстрый и безопасный алгоритм. Если по какой-то причинам требуется совместимость со старыми системами, вместо него можно использовать rsa с 4096 бит.</p>
+<p><strong>Ввести команду в консоль (Linux / macOS / Git Bash)</strong>:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="s2">&quot;your_email@example.com&quot;</span>
+</pre></div>
+</div>
+<p>-t ed25519 — тип ключа (алгоритм шифрования).</p>
+<p>-C — комментарий (обычно email) для идентификации ключа.</p>
+<p>По умолчанию ключи сохранятся в ~/.ssh/id_ed25519 (закрытый, НИКОГДА НИКОМУ НЕ ПЕРЕДАВАТЬ) и ~/.ssh/id_ed25519.pub (открытый, его будем копировать на сервер).</p>
+<p>Cпециально для GitHub, чтобы не перезаписывать существующие ключи, можно назвать так:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="s2">&quot;your_email@example.com&quot;</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519_github</span>
+</pre></div>
+</div>
+</section>
+<section id="id5">
+<h2>3. Проверить права доступа на ключи<a class="headerlink" href="#id5" title="Ссылка на этот заголовок"></a></h2>
+<p>SSH ожидает строгие права на директорию и закрытый ключ:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chmod</span> <span class="mi">700</span> <span class="o">~/.</span><span class="n">ssh</span>
+<span class="n">chmod</span> <span class="mi">600</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>         <span class="c1"># или id_ed25519_github если такое название</span>
+<span class="n">chmod</span> <span class="mi">644</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="o">.</span><span class="n">pub</span>
+</pre></div>
+</div>
+<p>Если ключ RSA — заменить имя файла соответственно.</p>
+</section>
+<section id="ssh-agent">
+<h2>4. Добавить ключ в ssh-agent<a class="headerlink" href="#ssh-agent" title="Ссылка на этот заголовок"></a></h2>
+<p>Это нужно для того, чтобы не вводить passphrase каждый раз при входе.</p>
+<dl class="simple">
+<dt>Запустить ssh-agent в текущем терминале::</dt><dd><p>eval «$(ssh-agent -s)»</p>
+</dd>
+<dt>Добавить ключ в агент (если менялось название ключа использовать корректный вариант)::</dt><dd><p>ssh-add ~/.ssh/id_ed25519</p>
+</dd>
+</dl>
+<p>На macOS можно сохранить ключ в Keychain:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">add</span> <span class="o">--</span><span class="n">apple</span><span class="o">-</span><span class="n">use</span><span class="o">-</span><span class="n">keychain</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>
+</pre></div>
+</div>
+<p>В Windows (Git Bash) команды такие же:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;$(ssh-agent -s)&quot;</span> <span class="n">и</span> <span class="n">ssh</span><span class="o">-</span><span class="n">add</span><span class="o">.</span>
+</pre></div>
+</div>
+<p>Для PuTTY/Windows использовать PuTTYgen для генерации и Pageant для загрузки приватного ключа .ppk.</p>
+</section>
+<section id="id6">
+<h2>5. Скопировать открытый ключ в буфер обмена<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
+<p>Linux/macOS:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cat</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span><span class="o">.</span><span class="n">pub</span>
+</pre></div>
+</div>
+<p>Windows:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Get-Content $env:USERPROFILE\.ssh\id_ed25519.pub
+</pre></div>
+</div>
+<p>Строка должна выглядеть примерно так: <code class="docutils literal notranslate"><span class="pre">ssh-ed25519</span> <span class="pre">AAAAC3NzaC1lZDI1NTE5AAAAIF...</span> <span class="pre">user&#64;example.com</span></code></p>
+</section>
+<section id="github">
+<h2>6. Добавить ключ в GitHub<a class="headerlink" href="#github" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic simple">
+<li><p>Войти в аккаунт GitHub.</p></li>
+<li><p>Нажать на иконку профиля → Settings.</p></li>
+<li><p>В меню слева выбрать SSH and GPG keys.</p></li>
+<li><p>Нажать New SSH key (или New SSH key / Add SSH key).</p></li>
+<li><p>В поле Title ввести понятное имя (например, laptop-2025 или work-desktop).</p></li>
+<li><p>В поле Key вставить содержимое из id_ed25519.pub.</p></li>
+<li><p>Нажать Add SSH key. Если включена двухфакторная аутентификация, может потребоваться подтверждение действия.</p></li>
+</ol>
+<p><strong>Проверка подключения к GitHub</strong></p>
+<p>Ввести команду в консоль:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">T</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span>
+</pre></div>
+</div>
+<p>Возможные корректные ответы:</p>
+<p>GitHub распознал ключ:</p>
+<blockquote>
+<div><p>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</div></blockquote>
+<p>Если ключ не найден или не используется: подсказки об отказе в доступе:</p>
+<blockquote>
+<div><p>Permission denied (publickey).</p>
+</div></blockquote>
+<p>Если сообщение:</p>
+<blockquote>
+<div><p>Are you sure you want to continue connecting (yes/no)?</p>
+</div></blockquote>
+<p>Ввести y/yes (это первый раз для данного хоста).</p>
+<p><strong>Убедиться, что Git использует SSH-адрес репозитория</strong></p>
+<p>Проверить текущие remotes:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
+</pre></div>
+</div>
+<p>Если URL вида <a class="reference external" href="https://github.com/username/repo.git">https://github.com/username/repo.git</a>, то Git использует HTTPS. Переключить на SSH:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">username</span><span class="o">/</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p><strong>Вариант для Windows с PuTTY (если не используется OpenSSH)</strong></p>
+<ol class="arabic simple">
+<li><p>Открыть PuTTYgen → Generate → двигай мышью в окне для генерации энтропии.</p></li>
+<li><p>Ввести комментарий (email) и passphrase.</p></li>
+<li><p>Нажать Save private key (.ppk) и Save public key (или скопировать содержимое поля Public key for pasting into OpenSSH from PuTTYgen).</p></li>
+<li><p>На GitHub вставить публичный ключ.</p></li>
+<li><p>Для автоматической загрузки ключа в Windows использовать Pageant (часть PuTTY) — добавить .ppk.</p></li>
+</ol>
+</section>
+<section id="id7">
+<h2>Рекомендации по безопасности<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>
+<ul class="simple">
+<li><p>Нельзя выкладывать приватный ключ (~/.ssh/id_*) в интернет или в публичные репозитории.</p></li>
+<li><p>Нужно использовать passphrase для приватного ключа.</p></li>
+<li><p>Для разных устройств и сервисов лучше делать разные ключи, так как в случае взлома проще отозвать один ключ.</p></li>
+<li><p>Необходимо хранить резервную копию приватного ключа в защищенном месте (зашифрованный диск, менеджер паролей).</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
+        <a href="implementation.html" class="btn btn-neutral float-left" title="Основная информация" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="troubleshooting.html" class="btn btn-neutral float-right" title="Частые проблемы и их решения" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Авторские права 2025, Anastasia Pchela. </p>
+  </div>
+
+  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
+    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

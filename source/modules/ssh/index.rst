@@ -11,3 +11,5 @@ SSH (Secure SHell — защищенная оболочка) – сетевой 
 
    overview
    implementation
+   best_practices
+   troubleshooting
