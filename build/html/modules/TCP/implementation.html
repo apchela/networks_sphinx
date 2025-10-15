@@ -6,7 +6,7 @@
   <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Основная информация &mdash; документация Networks information 1.0.0</title>
+  <title>Уровни модели TCP/IP &mdash; документация Networks information 1.0.0</title>
       <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
 
@@ -20,7 +20,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
     <link rel="search" title="Поиск" href="../../search.html" />
-    <link rel="next" title="Что такое VPS" href="../vps/index.html" />
+    <link rel="next" title="Применение TCP/IP в реальности" href="best_practices.html" />
     <link rel="prev" title="История создания" href="overview.html" /> 
 </head>
 
@@ -46,17 +46,17 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое TCP</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Основная информация</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#tcp-ip">Что включает TCP/IP</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Уровни модели TCP/IP</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id1">Что включает TCP/IP</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">Принцип работы TCP/IP</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">Уровни модели TCP/IP</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="best_practices.html">Применение TCP/IP в реальности</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../vps/index.html">Что такое VPS</a></li>
 </ul>
 
@@ -75,7 +75,7 @@
   <ul class="wy-breadcrumbs">
       <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
           <li class="breadcrumb-item"><a href="index.html">Что такое TCP</a></li>
-      <li class="breadcrumb-item active">Основная информация</li>
+      <li class="breadcrumb-item active">Уровни модели TCP/IP</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../_sources/modules/tcp/implementation.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
       </li>
@@ -85,10 +85,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
              
-  <section id="id1">
-<h1>Основная информация<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
-<section id="tcp-ip">
-<h2>Что включает TCP/IP<a class="headerlink" href="#tcp-ip" title="Ссылка на этот заголовок"></a></h2>
+  <section id="tcp-ip">
+<h1>Уровни модели TCP/IP<a class="headerlink" href="#tcp-ip" title="Ссылка на этот заголовок"></a></h1>
+<section id="id1">
+<h2>Что включает TCP/IP<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
 <p>TCP/IP — это стек протоколов, где каждый отвечает за свою задачу.</p>
 <table class="docutils align-default">
 <tbody>
@@ -115,6 +115,14 @@
 </tr>
 </tbody>
 </table>
+<p>TCP/IP имеет всего 4 уровня в отличие от модели <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a>.</p>
+<img alt="../../_images/tcp.png" src="../../_images/tcp.png" />
+<ol class="arabic simple">
+<li><p>Канальный (Link Layer) — обеспечивает передачу данных внутри одной сети, используются протоколы Ethernet, Wi-Fi, PPP.</p></li>
+<li><p>Интернет (Internet Layer) — отвечает за маршрутизацию и IP-адресацию.</p></li>
+<li><p>Транспортный (Transport Layer) — контролирует доставку пакетов (TCP, UDP).</p></li>
+<li><p>Прикладной (Application Layer) — сервисы для пользователя и приложений (HTTP, FTP, SMTP, DNS, SSH).</p></li>
+</ol>
 </section>
 <section id="id2">
 <h2>Принцип работы TCP/IP<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
@@ -139,17 +147,6 @@
 </ol>
 <p>Когда все фрагменты доходят до получателя, они восстанавливаются в исходное сообщение.</p>
 </section>
-<section id="id3">
-<h2>Уровни модели TCP/IP<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
-<p>TCP/IP имеет всего 4 уровня в отличие от модели OSI.</p>
-<img alt="modules/tcp/images/tcp" src="modules/tcp/images/tcp" />
-<ol class="arabic simple">
-<li><p>Канальный (Link Layer) — jбеспечивает передачу данных внутри одной сети, используются протоколы Ethernet, Wi-Fi, PPP.</p></li>
-<li><p>Интернет (Internet Layer) — отвечает за маршрутизацию и IP-адресацию.</p></li>
-<li><p>Транспортный (Transport Layer) — контролирует доставку пакетов (TCP, UDP).</p></li>
-<li><p>Прикладной (Application Layer) — сервисы для пользователя и приложений (HTTP, FTP, SMTP, DNS, SSH).</p></li>
-</ol>
-</section>
 </section>
 
 
@@ -157,7 +154,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="overview.html" class="btn btn-neutral float-left" title="История создания" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
-        <a href="../vps/index.html" class="btn btn-neutral float-right" title="Что такое VPS" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="best_practices.html" class="btn btn-neutral float-right" title="Применение TCP/IP в реальности" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

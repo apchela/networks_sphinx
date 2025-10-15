@@ -11,6 +11,6 @@
    :caption: Contents:
 
    modules/osi/index.rst
-   modules/ssh/index.rst
    modules/tcp/index.rst
+   modules/ssh/index.rst
    modules/vps/index.rst

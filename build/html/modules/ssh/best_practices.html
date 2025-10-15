@@ -46,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое SSH</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation.html">Основная информация</a></li>
@@ -62,6 +63,7 @@
 <li class="toctree-l2"><a class="reference internal" href="troubleshooting.html">Частые проблемы и их решения</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../vps/index.html">Что такое VPS</a></li>
 </ul>
 
         </div>
@@ -90,7 +92,7 @@
            <div itemprop="articleBody">
              
   <section id="ssh-githab">
-<h1>Как создать свой SSH-ключ (на примере GitHab)<a class="headerlink" href="#ssh-githab" title="Ссылка на этот заголовок"></a></h1>
+<span id="create-ssh"></span><h1>Как создать свой SSH-ключ (на примере GitHab)<a class="headerlink" href="#ssh-githab" title="Ссылка на этот заголовок"></a></h1>
 <section id="id1">
 <h2>1. Проверить наличие ключей<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
 <p>Открыть терминал (Linux/macOS) или Git Bash/WSL (Windows). Ввести команду:</p>
@@ -104,14 +106,17 @@
 </section>
 <section id="id4">
 <h2>2. Генерация ключа<a class="headerlink" href="#id4" title="Ссылка на этот заголовок"></a></h2>
-<p>Ed25519 — современный, быстрый и безопасный алгоритм. Если по какой-то причинам требуется совместимость со старыми системами, вместо него можно использовать rsa с 4096 бит.</p>
 <p><strong>Ввести команду в консоль (Linux / macOS / Git Bash)</strong>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="s2">&quot;your_email@example.com&quot;</span>
 </pre></div>
 </div>
+<p>Ed25519 — современный, быстрый и безопасный алгоритм. Если по какой-то причинам требуется совместимость со старыми системами, вместо него можно использовать rsa с 4096 бит.</p>
 <p>-t ed25519 — тип ключа (алгоритм шифрования).</p>
 <p>-C — комментарий (обычно email) для идентификации ключа.</p>
-<p>По умолчанию ключи сохранятся в ~/.ssh/id_ed25519 (закрытый, НИКОГДА НИКОМУ НЕ ПЕРЕДАВАТЬ) и ~/.ssh/id_ed25519.pub (открытый, его будем копировать на сервер).</p>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
+<p>По умолчанию ключи сохранятся в ~/.ssh/id_ed25519 (закрытый) и ~/.ssh/id_ed25519.pub (открытый, его будем копировать на сервер).</p>
+</div>
 <p>Cпециально для GitHub, чтобы не перезаписывать существующие ключи, можно назвать так:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">keygen</span> <span class="o">-</span><span class="n">t</span> <span class="n">ed25519</span> <span class="o">-</span><span class="n">C</span> <span class="s2">&quot;your_email@example.com&quot;</span> <span class="o">-</span><span class="n">f</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519_github</span>
 </pre></div>
@@ -130,12 +135,14 @@
 <section id="ssh-agent">
 <h2>4. Добавить ключ в ssh-agent<a class="headerlink" href="#ssh-agent" title="Ссылка на этот заголовок"></a></h2>
 <p>Это нужно для того, чтобы не вводить passphrase каждый раз при входе.</p>
-<dl class="simple">
-<dt>Запустить ssh-agent в текущем терминале::</dt><dd><p>eval «$(ssh-agent -s)»</p>
-</dd>
-<dt>Добавить ключ в агент (если менялось название ключа использовать корректный вариант)::</dt><dd><p>ssh-add ~/.ssh/id_ed25519</p>
-</dd>
-</dl>
+<p>Запустить ssh-agent в текущем терминале:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;$(ssh-agent -s)&quot;</span>
+</pre></div>
+</div>
+<p>Добавить ключ в агент (если менялось название ключа использовать корректный вариант):</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">add</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>
+</pre></div>
+</div>
 <p>На macOS можно сохранить ключ в Keychain:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span><span class="o">-</span><span class="n">add</span> <span class="o">--</span><span class="n">apple</span><span class="o">-</span><span class="n">use</span><span class="o">-</span><span class="n">keychain</span> <span class="o">~/.</span><span class="n">ssh</span><span class="o">/</span><span class="n">id_ed25519</span>
 </pre></div>
@@ -144,7 +151,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="nb">eval</span> <span class="s2">&quot;$(ssh-agent -s)&quot;</span> <span class="n">и</span> <span class="n">ssh</span><span class="o">-</span><span class="n">add</span><span class="o">.</span>
 </pre></div>
 </div>
-<p>Для PuTTY/Windows использовать PuTTYgen для генерации и Pageant для загрузки приватного ключа .ppk.</p>
 </section>
 <section id="id6">
 <h2>5. Скопировать открытый ключ в буфер обмена<a class="headerlink" href="#id6" title="Ссылка на этот заголовок"></a></h2>
@@ -165,7 +171,7 @@
 <li><p>Нажать на иконку профиля → Settings.</p></li>
 <li><p>В меню слева выбрать SSH and GPG keys.</p></li>
 <li><p>Нажать New SSH key (или New SSH key / Add SSH key).</p></li>
-<li><p>В поле Title ввести понятное имя (например, laptop-2025 или work-desktop).</p></li>
+<li><p>В поле Title ввести понятное имя.</p></li>
 <li><p>В поле Key вставить содержимое из id_ed25519.pub.</p></li>
 <li><p>Нажать Add SSH key. Если включена двухфакторная аутентификация, может потребоваться подтверждение действия.</p></li>
 </ol>
@@ -174,20 +180,17 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="o">-</span><span class="n">T</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span>
 </pre></div>
 </div>
-<p>Возможные корректные ответы:</p>
+<p><strong>Возможные корректные ответы</strong>:</p>
 <p>GitHub распознал ключ:</p>
-<blockquote>
-<div><p>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
-</div></blockquote>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Hi username! You’ve successfully authenticated, but GitHub does not provide shell access.</p>
+</div>
 <p>Если ключ не найден или не используется: подсказки об отказе в доступе:</p>
-<blockquote>
-<div><p>Permission denied (publickey).</p>
-</div></blockquote>
-<p>Если сообщение:</p>
-<blockquote>
-<div><p>Are you sure you want to continue connecting (yes/no)?</p>
-</div></blockquote>
-<p>Ввести y/yes (это первый раз для данного хоста).</p>
+<div class="admonition note">
+<p class="admonition-title">Примечание</p>
+<p>Permission denied (publickey).</p>
+</div>
 <p><strong>Убедиться, что Git использует SSH-адрес репозитория</strong></p>
 <p>Проверить текущие remotes:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="o">-</span><span class="n">v</span>
@@ -197,14 +200,6 @@
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">remote</span> <span class="nb">set</span><span class="o">-</span><span class="n">url</span> <span class="n">origin</span> <span class="n">git</span><span class="nd">@github</span><span class="o">.</span><span class="n">com</span><span class="p">:</span><span class="n">username</span><span class="o">/</span><span class="n">repo</span><span class="o">.</span><span class="n">git</span>
 </pre></div>
 </div>
-<p><strong>Вариант для Windows с PuTTY (если не используется OpenSSH)</strong></p>
-<ol class="arabic simple">
-<li><p>Открыть PuTTYgen → Generate → двигай мышью в окне для генерации энтропии.</p></li>
-<li><p>Ввести комментарий (email) и passphrase.</p></li>
-<li><p>Нажать Save private key (.ppk) и Save public key (или скопировать содержимое поля Public key for pasting into OpenSSH from PuTTYgen).</p></li>
-<li><p>На GitHub вставить публичный ключ.</p></li>
-<li><p>Для автоматической загрузки ключа в Windows использовать Pageant (часть PuTTY) — добавить .ppk.</p></li>
-</ol>
 </section>
 <section id="id7">
 <h2>Рекомендации по безопасности<a class="headerlink" href="#id7" title="Ссылка на этот заголовок"></a></h2>

@@ -1,4 +1,5 @@
-=============
+.. _section-tcp:
+
 Что такое TCP
 =============
 
@@ -10,3 +11,4 @@ TCP/IP (Transmission Control Protocol / Internet Protocol) — это набор
 
    overview
    implementation
+   best_practices
