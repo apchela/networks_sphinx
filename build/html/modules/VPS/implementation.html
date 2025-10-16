@@ -53,7 +53,7 @@
 <li class="toctree-l3"><a class="reference internal" href="#id1">1. Выбор провайдера</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#id2">2. Регистрация</a></li>
 <li class="toctree-l3"><a class="reference internal" href="#ssh">3. Подключение к серверу по <span class="xref std std-ref">SSH</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4. Настроить SSH для нового пользователя</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id3">4. Настроить <span class="xref std std-ref">SSH</span> для нового пользователя</a></li>
 </ul>
 </li>
 </ul>
@@ -86,11 +86,11 @@
            <div itemprop="articleBody">
              
   <section id="vps">
-<h1>Как настроить VPS-сервер<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h1>
+<span id="create-vps"></span><h1>Как настроить VPS-сервер<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h1>
 <section id="id1">
 <h2>1. Выбор провайдера<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
 <p>Лучше всего выбирать ближайшую локацию сервера — будет выше скорость работы.
-Для легких проектов будет достаточно 1–2 ГБ ОЗУ объема RAM и CPU.
+Для легких проектов будет достаточно 1 ГБ ОЗУ объема RAM и CPU.
 Обязательно наличие SSH-доступа, обычно он включен по умолчанию.</p>
 </section>
 <section id="id2">
@@ -106,6 +106,7 @@
 <section id="ssh">
 <h2>3. Подключение к серверу по <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a><a class="headerlink" href="#ssh" title="Ссылка на этот заголовок"></a></h2>
 <ul>
+<li><p>Добавить публичный ключ на VPS-сервер для user.</p></li>
 <li><p>Ввести команду в терминале:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">root</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
 </pre></div>
@@ -132,12 +133,15 @@
 </ul>
 </section>
 <section id="id3">
-<h2>4. Настроить SSH для нового пользователя<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
-<p>Открыть <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH-конфигурацию</span></a>:</p>
+<h2>4. Настроить <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a> для нового пользователя<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<ol class="arabic">
+<li><p>Открыть <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH-конфигурацию</span></a>:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
 </pre></div>
 </div>
-<p>Найти и изменить/добавить следующие параметры:</p>
+</li>
+<li><p>Найти и изменить/добавить следующие параметры:</p></li>
+</ol>
 <ul>
 <li><p>Меняем стандартный порт (например, на 22222):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Port</span> <span class="mi">22222</span>
@@ -149,12 +153,13 @@
 </pre></div>
 </div>
 </li>
-<li><p>Разрешаем вход только по ключу (без пароля):</p>
+<li><p>В <cite>/etc/ssh/sshd_config</cite> разрешаем вход только по ключу (без пароля):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PasswordAuthentication</span> <span class="n">no</span>
+<span class="n">PubkeyAuthentication</span> <span class="n">yes</span>
 </pre></div>
 </div>
 </li>
-<li><p>(Опционально) Разрешаем только нашего пользователя:</p>
+<li><p>Разрешаем только нашего пользователя (опционально):</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AllowUsers</span> <span class="n">user</span>
 </pre></div>
 </div>
@@ -165,7 +170,10 @@
 </div>
 </li>
 </ul>
+<div class="admonition important">
+<p class="admonition-title">Важно</p>
 <p>Теперь вход будет возможен только по ключу от пользователя user.</p>
+</div>
 <ul>
 <li><p>Проверить соединение. Выйти из сервера (exit) и подключиться заново:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">admin</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>

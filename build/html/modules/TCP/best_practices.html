@@ -111,15 +111,11 @@
 <section id="tcp-ip-osi">
 <h2>Почему TCP/IP на практике важнее модели <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a><a class="headerlink" href="#tcp-ip-osi" title="Ссылка на этот заголовок"></a></h2>
 <ul class="simple">
-<li><p>Основное отличие в том, что модель :ref:<a href="#id1"><span class="problematic" id="id2">`</span></a>OSI &lt;section-osi&gt; — теоретическая основа. Она помогает понять, где и что работает, но в реальных системах не используется напрямую.</p></li>
-<li><p>Протоколы TCP/IP — это рабочие стандарты, которые применяются в реальной жизни.</p></li>
+<li><p>Основное отличие в том, что модель <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a> — теоретическая основа. Она помогает понять, где и что работает, но в реальных системах не используется напрямую.</p></li>
+<li><p>Протоколы TCP/IP — это рабочие стандарты, которые применяются в реальной жизни. Интернет и локальные сети работают по модели TCP/IP, а не по <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a>. Все знакомые технологии (HTTP, HTTPS, SMTP, FTP, DNS, SSH) реализованы именно в рамках этой модели.</p></li>
+<li><p>Вместо семи уровней <a class="reference internal" href="../osi/implementation.html#levels-osi"><span class="std std-ref">OSI</span></a> TCP/IP имеет четыре, потому что многие функции <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a> объединили для удобства. В TCP/IP нет отдельного <em>Сеансового</em> и <em>Представительского уровней</em> — их функции выполняет <em>Прикладной уровень</em>.</p></li>
 </ul>
-<p>Интернет и локальные сети работают по модели TCP/IP, а не по OSI. Все знакомые технологии (HTTP, HTTPS, SMTP, FTP, DNS, SSH) реализованы именно в рамках этой модели.</p>
-<ul class="simple">
-<li><p>Вместо семи уровней <a class="reference internal" href="../osi/implementation.html#levels-osi"><span class="std std-ref">OSI</span></a> TCP/IP имеет четыре, потому что многие функции :ref:<a href="#id3"><span class="problematic" id="id4">`</span></a>OSI &lt;section-osi&gt; объединили для удобства.</p></li>
-</ul>
-<p>В TCP/IP нет отдельного Сеансового и Представительского уровней — их функции выполняет Прикладной уровень.
-Канальный и физический уровни <a class="reference internal" href="../osi/implementation.html#levels-osi"><span class="std std-ref">OSI</span></a> в TCP/IP объединены в один — сетевой интерфейс.</p>
+<p>Канальный и физический уровни <a class="reference internal" href="../osi/implementation.html#levels-osi"><span class="std std-ref">OSI</span></a> в TCP/IP объединены в один — сетевой интерфейс.</p>
 <img alt="../../_images/comparison.png" src="../../_images/comparison.png" />
 </section>
 </section>

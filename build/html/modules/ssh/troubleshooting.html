@@ -20,6 +20,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
     <link rel="search" title="Поиск" href="../../search.html" />
+    <link rel="next" title="Что такое VPS" href="../vps/index.html" />
     <link rel="prev" title="Как создать свой SSH-ключ (на примере GitHab)" href="best_practices.html" /> 
 </head>
 
@@ -45,6 +46,7 @@
               <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое SSH</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="overview.html">История создания</a></li>
 <li class="toctree-l2"><a class="reference internal" href="implementation.html">Основная информация</a></li>
@@ -52,6 +54,7 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Частые проблемы и их решения</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../vps/index.html">Что такое VPS</a></li>
 </ul>
 
         </div>
@@ -82,7 +85,7 @@
   <section id="id1">
 <h1>Частые проблемы и их решения<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
 <ol class="arabic simple">
-<li><p>Permission denied (publickey).</p></li>
+<li><p><strong>Permission denied (publickey)</strong>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>Проверить, что публичный ключ добавлен в GitHub (без лишних символов).</p></li>
@@ -91,21 +94,21 @@
 <li><p>При использовании Windows PuTTY удедиться, что Pageant загружает .ppk.</p></li>
 </ul>
 <ol class="arabic simple" start="2">
-<li><p>SSH использует не тот ключ (несколько ключей).</p></li>
+<li><p><strong>SSH использует не тот ключ (несколько ключей)</strong>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>Использовать файл ~/.ssh/config, чтобы явно назначить IdentityFile для github.com.</p></li>
 <li><p>Или вызвать ssh -vT <a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a> для подробного логирования — покажет, какие ключи используются.</p></li>
 </ul>
 <ol class="arabic simple" start="3">
-<li><p>Git по-прежнему запрашивает имя/пароль.</p></li>
+<li><p><strong>Git по-прежнему запрашивает имя/пароль</strong>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>Проверить URL удаленного репозитория — он должен быть SSH (<a class="reference external" href="mailto:git&#37;&#52;&#48;github&#46;com">git<span>&#64;</span>github<span>&#46;</span>com</a>:…), а не HTTPS.</p></li>
 <li><p>Проверить настройки credential helper (если Git запоминает HTTPS креденшелы).</p></li>
 </ul>
 <ol class="arabic simple" start="4">
-<li><p>Ключ скомпрометирован.</p></li>
+<li><p><strong>Ключ скомпрометирован</strong>.</p></li>
 </ol>
 <ul class="simple">
 <li><p>Удалить соответствующий ключ из GitHub (Settings → SSH and GPG keys) и сгенерировать новый ключ; больше не использовать скомпрометированный.</p></li>
@@ -117,6 +120,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
         <a href="best_practices.html" class="btn btn-neutral float-left" title="Как создать свой SSH-ключ (на примере GitHab)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        <a href="../vps/index.html" class="btn btn-neutral float-right" title="Что такое VPS" accesskey="n" rel="next">Следующая <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

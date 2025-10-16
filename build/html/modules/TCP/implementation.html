@@ -116,34 +116,51 @@
 </tbody>
 </table>
 <p>TCP/IP имеет всего 4 уровня в отличие от модели <a class="reference internal" href="../osi/index.html#section-osi"><span class="std std-ref">OSI</span></a>.</p>
-<img alt="../../_images/tcp.png" src="../../_images/tcp.png" />
-<ol class="arabic simple">
-<li><p>Канальный (Link Layer) — обеспечивает передачу данных внутри одной сети, используются протоколы Ethernet, Wi-Fi, PPP.</p></li>
-<li><p>Интернет (Internet Layer) — отвечает за маршрутизацию и IP-адресацию.</p></li>
-<li><p>Транспортный (Transport Layer) — контролирует доставку пакетов (TCP, UDP).</p></li>
-<li><p>Прикладной (Application Layer) — сервисы для пользователя и приложений (HTTP, FTP, SMTP, DNS, SSH).</p></li>
-</ol>
+<table class="docutils align-default">
+<tbody>
+<tr class="row-odd"><td><p><strong>Уровень</strong></p></td>
+<td><p><strong>Назначение</strong></p></td>
+<td><p><strong>Пример</strong></p></td>
+</tr>
+<tr class="row-even"><td><p>Канальный (Link Layer)</p></td>
+<td><p>Передает данные внутри одной сети</p></td>
+<td><p>Ethernet, Wi-Fi, PPP</p></td>
+</tr>
+<tr class="row-odd"><td><p>Интернет (Internet Layer)</p></td>
+<td><p>Отвечает за маршрутизацию</p></td>
+<td><p>IP</p></td>
+</tr>
+<tr class="row-even"><td><p>Транспортный (Transport Layer)</p></td>
+<td><p>Контролирует доставку пакетов</p></td>
+<td><p>TCP, UDP</p></td>
+</tr>
+<tr class="row-odd"><td><p>Прикладной (Application Layer)</p></td>
+<td><p>Сервисы для пользователя и приложений</p></td>
+<td><p>HTTP, FTP, SMTP, DNS, SSH</p></td>
+</tr>
+</tbody>
+</table>
 </section>
 <section id="id2">
 <h2>Принцип работы TCP/IP<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
 <ol class="arabic simple">
-<li><p>Данные разбиваются на пакеты.</p></li>
+<li><p><strong>Данные разбиваются на пакеты</strong>.</p></li>
 </ol>
 <p>Браузер не отправляет всю страницу целиком при открытии сайта. Он делит данные на небольшие части (пакеты).</p>
 <ol class="arabic simple" start="2">
-<li><p>Каждый пакет получает адрес (IP).</p></li>
+<li><p><strong>Каждый пакет получает адрес (IP)</strong>.</p></li>
 </ol>
 <p>В пакете записано, куда он должен попасть (IP-адрес сервера) и откуда пришел (IP отправителя).</p>
 <ol class="arabic simple" start="3">
-<li><p>TCP следит за порядком и целостностью.</p></li>
+<li><p><strong>TCP следит за порядком и целостностью</strong>.</p></li>
 </ol>
 <p>Если какой-то пакет потерялся, TCP запрашивает его повторно. Потом собирает все пакеты в правильном порядке.</p>
 <ol class="arabic simple" start="4">
-<li><p>IP обеспечивает доставку по маршруту.</p></li>
+<li><p><strong>IP обеспечивает доставку по маршруту</strong>.</p></li>
 </ol>
 <p>IP определяет путь через маршрутизаторы и сети до конечного узла.</p>
 <ol class="arabic simple" start="5">
-<li><p>На приемной стороне пакеты собираются обратно.</p></li>
+<li><p><strong>На приемной стороне пакеты собираются обратно</strong>.</p></li>
 </ol>
 <p>Когда все фрагменты доходят до получателя, они восстанавливаются в исходное сообщение.</p>
 </section>

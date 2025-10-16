@@ -51,7 +51,6 @@
 <li class="toctree-l2 current"><a class="current reference internal" href="#">Основные ошибки</a></li>
 <li class="toctree-l2"><a class="reference internal" href="best_practices.html">Использование в документации</a></li>
 <li class="toctree-l2"><a class="reference internal" href="terms.html">Ключевые термины</a></li>
-<li class="toctree-l2"><a class="reference internal" href="references.html">Источники</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a></li>
@@ -87,31 +86,31 @@
   <section id="id1">
 <h1>Основные ошибки<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h1>
 <ol class="arabic simple">
-<li><p>ping не работает → сетевой уровень (3).</p></li>
+<li><p><strong>ping не работает → сетевой уровень (3)</strong>.</p></li>
 </ol>
 <blockquote>
 <div><p>Пакеты ICMP не доходят, значит, проблема с IP-адресацией или маршрутизацией.</p>
 </div></blockquote>
 <ol class="arabic simple" start="2">
-<li><p>curl возвращает 500 Internal Server Error → прикладной уровень (7).</p></li>
+<li><p><strong>curl возвращает 500 Internal Server Error → прикладной уровень (7)</strong>.</p></li>
 </ol>
 <blockquote>
 <div><p>Сервер доступен, соединение установлено, но ошибка в логике приложения (например, сбой веб-сервера или базы данных).</p>
 </div></blockquote>
 <ol class="arabic simple" start="3">
-<li><p>tcpdump показывает SYN, но нет ACK → транспортный уровень (4).</p></li>
+<li><p><strong>tcpdump показывает SYN, но нет ACK → транспортный уровень (4)</strong>.</p></li>
 </ol>
 <blockquote>
 <div><p>Клиент отправляет запрос на соединение (SYN), но сервер не отвечает (нет ACK). Проблема может быть в брандмауэре, настройке <a class="reference internal" href="../tcp/index.html#section-tcp"><span class="std std-ref">TCP</span></a> или блокировке порта.</p>
 </div></blockquote>
 <ol class="arabic simple" start="4">
-<li><p>Wi-Fi подключен, но интернета нет → канальный уровень (2) работает, а сетевой (3) не настроен.</p></li>
+<li><p><strong>Wi-Fi подключен, но интернета нет → канальный уровень (2) работает, а сетевой (3) не настроен</strong>.</p></li>
 </ol>
 <blockquote>
 <div><p>Сеть видна, но нет IP-адреса (например, DHCP не выдал).</p>
 </div></blockquote>
 <ol class="arabic simple" start="5">
-<li><p>Сайт открывается, но картинки не грузятся → прикладной уровень (7)</p></li>
+<li><p><strong>Сайт открывается, но картинки не грузятся → прикладной уровень (7)</strong>.</p></li>
 </ol>
 <blockquote>
 <div><p>Сервер отдает HTML, но не может найти или отдать статические файлы.</p>
