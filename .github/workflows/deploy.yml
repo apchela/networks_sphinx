@@ -34,6 +34,9 @@ jobs:
         run: |
           sphinx-build -b html source _build/html
 
+      - name: Create .nojekyll file
+        run: touch _build/html/.nojekyll
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
