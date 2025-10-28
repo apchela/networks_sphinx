@@ -1,100 +1,147 @@
-
-
 <!DOCTYPE html>
-<html class="writer-html5" lang="ru" data-content_root="../../">
+<html lang="ru" data-accent-color="violet" data-content_root="../../">
 <head>
-  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
-
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Как настроить VPS-сервер &mdash; документация Networks information 1.0.0</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b86133f3" />
-      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=e59714d7" />
-
-  
-      <script src="../../_static/jquery.js?v=5d32c60e"></script>
-      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
-      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
-      <script src="../../_static/doctools.js?v=9bcbadda"></script>
-      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
-      <script src="../../_static/translations.js?v=cd1d70c9"></script>
-    <script src="../../_static/js/theme.js"></script>
-    <link rel="index" title="Алфавитный указатель" href="../../genindex.html" />
-    <link rel="search" title="Поиск" href="../../search.html" />
-    <link rel="prev" title="Для чего используется VPS?" href="overview.html" /> 
-</head>
-
-<body class="wy-body-for-nav"> 
-  <div class="wy-grid-for-nav">
-    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-
-          
-          
-          <a href="../../index.html" class="icon icon-home">
-            Networks information
-          </a>
-<div role="search">
-  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
-    <input type="text" name="q" placeholder="Поиск в документации" aria-label="Поиск в документации" />
-    <input type="hidden" name="check_keywords" value="yes" />
-    <input type="hidden" name="area" value="default" />
-  </form>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"><title>Как настроить VPS-сервер - документация Networks information 1.0.0</title><link rel="index" title="Алфавитный указатель" href="../../genindex.html" /><link rel="search" title="Поиск" href="../../search.html" /><link rel="prev" title="Для чего используется VPS?" href="overview.html" /><script>
+    function setColorMode(t){let e=document.documentElement;e.setAttribute("data-color-mode",t);let a=window.matchMedia&&window.matchMedia("(prefers-color-scheme: dark)").matches,s=t;"auto"===t&&(s=a?"dark":"light"),"light"===s?(e.classList.remove("dark"),e.classList.add("light")):(e.classList.remove("light"),e.classList.add("dark"))}
+    setColorMode(localStorage._theme||"auto");
+  </script><link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=b1a1f93b" />
+    <link rel="stylesheet" type="text/css" href="../../_static/shibuya.css?v=bb284d7b" />
+    <link media="print" rel="stylesheet" type="text/css" href="../../_static/print.css?v=20ff2c19" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --sy-f-text: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+  --sy-f-heading: "Inter", var(--sy-f-sys), var(--sy-f-cjk), sans-serif;
+}
+</style>
+    <meta property="og:type" content="website"/><meta property="og:title" content="Как настроить VPS-сервер"/>
+<meta name="twitter:card" content="summary"/>
+  </head>
+<body><div class="sy-head">
+  <div class="sy-head-blur"></div>
+  <div class="sy-head-inner sy-container mx-auto">
+    <a class="sy-head-brand" href="../../index.html">
+      
+      
+      <strong>Networks information</strong>
+    </a>
+    <div class="sy-head-nav" id="head-nav">
+      <nav class="sy-head-links"></nav>
+      <div class="sy-head-extra flex items-center print:hidden"><form class="searchbox flex items-center" action="../../search.html" method="get">
+  <input type="text" name="q" placeholder="Поиск" />
+  <kbd>/</kbd>
+</form><div class="sy-head-socials"></div></div>
+    </div>
+    <div class="sy-head-actions flex items-center shrink-0 print:hidden"><button class="js-theme theme-switch flex items-center"
+data-aria-auto="Switch to light color mode"
+data-aria-light="Switch to dark color mode"
+data-aria-dark="Switch to auto color mode">
+<i class="i-lucide theme-icon"></i>
+</button><button class="md:hidden flex items-center js-menu" aria-label="Menu" type="button" aria-controls="head-nav" aria-expanded="false">
+        <div class="hamburger">
+          <span class="hamburger_1"></span>
+          <span class="hamburger_2"></span>
+          <span class="hamburger_3"></span>
+        </div>
+      </button>
+    </div>
+  </div>
 </div>
-        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Меню навигации">
-              <p class="caption" role="heading"><span class="caption-text">Contents:</span></p>
+<div class="sy-page sy-container flex mx-auto">
+  <aside id="lside" class="sy-lside md:w-72 md:shrink-0 print:hidden">
+    <div class="sy-lside-inner md:sticky">
+      <div class="sy-scrollbar p-6">
+        <div class="globaltoc" data-expand-depth="0"><p class="caption" role="heading" aria-level="3"><span class="caption-text">Contents:</span></p>
 <ul class="current">
-<li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a></li>
-<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое VPS</a><ul class="current">
-<li class="toctree-l2"><a class="reference internal" href="overview.html">Для чего используется VPS?</a></li>
-<li class="toctree-l2 current"><a class="current reference internal" href="#">Как настроить VPS-сервер</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#id1">1. Выбор провайдера</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id2">2. Регистрация</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#ssh">3. Подключение к серверу по <span class="xref std std-ref">SSH</span></a></li>
-<li class="toctree-l3"><a class="reference internal" href="#id3">4. Настроить <span class="xref std std-ref">SSH</span> для нового пользователя</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../osi/index.html">Что такое OSI</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../osi/overview.html">История создания</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osi/implementation.html">7 уровней модели OSI</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osi/troubleshooting.html">Основные ошибки</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osi/best_practices.html">Использование в документации</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../osi/terms.html">Ключевые термины</a></li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="../tcp/index.html">Что такое TCP</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../tcp/overview.html">История создания</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tcp/implementation.html">Уровни модели TCP/IP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../tcp/best_practices.html">Применение TCP/IP в реальности</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../ssh/index.html">Что такое SSH</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/overview.html">История создания</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/implementation.html">Основная информация</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/best_practices.html">Как создать свой SSH-ключ</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../ssh/troubleshooting.html">Частые проблемы и их решения</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Что такое VPS</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="overview.html">Для чего используется VPS?</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">Как настроить VPS-сервер</a></li>
 </ul>
 </li>
 </ul>
 
         </div>
       </div>
-    </nav>
-
-    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Меню навигации для мобильных устройств" >
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../../index.html">Networks information</a>
-      </nav>
-
-      <div class="wy-nav-content">
-        <div class="rst-content">
-          <div role="navigation" aria-label="Навигация по страницам">
-  <ul class="wy-breadcrumbs">
-      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
-          <li class="breadcrumb-item"><a href="index.html">Что такое VPS</a></li>
-      <li class="breadcrumb-item active">Как настроить VPS-сервер</li>
-      <li class="wy-breadcrumbs-aside">
-            <a href="../../_sources/modules/vps/implementation.rst.txt" rel="nofollow"> Просмотреть исходный код страницы</a>
-      </li>
-  </ul>
-  <hr/>
-</div>
-          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
-             
-  <section id="vps">
-<span id="create-vps"></span><h1>Как настроить VPS-сервер<a class="headerlink" href="#vps" title="Ссылка на этот заголовок"></a></h1>
+    </div>
+  </aside>
+  <div class="lside-overlay js-menu" role="button" aria-label="Close left sidebar" aria-controls="lside" aria-expanded="false"></div>
+  <aside id="rside" class="sy-rside pb-3 w-64 shrink-0 order-last">
+    <button class="rside-close js-menu xl:hidden" aria-label="Close Table of Contents" type="button" aria-controls="rside" aria-expanded="false">
+      <i class="i-lucide close"></i>
+    </button>
+    <div class="sy-scrollbar sy-rside-inner px-6 xl:top-16 xl:sticky xl:pl-0 pt-6 pb-4"><div class="localtoc"><h3>On this page</h3><ul>
+<li><a class="reference internal" href="#id1">1. &#1042;&#1099;&#1073;&#1086;&#1088; &#1087;&#1088;&#1086;&#1074;&#1072;&#1081;&#1076;&#1077;&#1088;&#1072;</a></li>
+<li><a class="reference internal" href="#id2">2. &#1056;&#1077;&#1075;&#1080;&#1089;&#1090;&#1088;&#1072;&#1094;&#1080;&#1103;</a></li>
+<li><a class="reference internal" href="#ssh">3. &#1055;&#1086;&#1076;&#1082;&#1083;&#1102;&#1095;&#1077;&#1085;&#1080;&#1077; &#1082; &#1089;&#1077;&#1088;&#1074;&#1077;&#1088;&#1091; &#1087;&#1086; <span class="xref std std-ref">SSH</span></a></li>
+<li><a class="reference internal" href="#id3">4. &#1053;&#1072;&#1089;&#1090;&#1088;&#1086;&#1080;&#1090;&#1100; <span class="xref std std-ref">SSH</span> &#1076;&#1083;&#1103; &#1085;&#1086;&#1074;&#1086;&#1075;&#1086; &#1087;&#1086;&#1083;&#1100;&#1079;&#1086;&#1074;&#1072;&#1090;&#1077;&#1083;&#1103;</a></li>
+</ul>
+</div><div id="ethical-ad-placement" data-ea-publisher="readthedocs"></div></div>
+  </aside>
+  <div class="rside-overlay js-menu" role="button" aria-label="Close Table of Contents" aria-controls="rside" aria-expanded="false"></div>
+  <main class="sy-main w-full max-sm:max-w-full print:pt-6">
+<div class="sy-breadcrumbs" role="navigation">
+  <div class="sy-breadcrumbs-inner flex items-center">
+    <div class="md:hidden mr-3">
+      <button class="js-menu" aria-label="Menu" type="button" aria-controls="lside" aria-expanded="false">
+        <i class="i-lucide menu"></i>
+      </button>
+    </div>
+    <ol class="flex-1" itemscope itemtype="https://schema.org/BreadcrumbList"><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="../../index.html"><span itemprop="name">Networks information</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="1" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <a itemprop="item" href="index.html"><span itemprop="name">Что такое VPS</span></a>
+        <span>/</span>
+        <meta itemprop="position" content="2" />
+      </li><li itemprop="itemListElement" itemscope itemtype="https://schema.org/ListItem">
+        <strong itemprop="name">Как настроить VPS-сервер</strong>
+        <meta itemprop="position" content="3" />
+      </li></ol>
+    <div class="xl:hidden ml-1">
+      <button class="js-menu" aria-label="Show table of contents" type="button" aria-controls="rside"
+        aria-expanded="false">
+        <i class="i-lucide outdent"></i>
+      </button>
+    </div>
+  </div>
+</div><div class="flex flex-col break-words justify-between">
+      <div class="min-w-0 max-w-6xl px-6 pb-6 pt-8 xl:px-12">
+        <article class="yue" role="main">
+          <section id="vps">
+<span id="create-vps"></span><h1>Как настроить VPS-сервер<a class="headerlink" href="#vps" title="Ссылка на этот заголовок">¶</a></h1>
 <section id="id1">
-<h2>1. Выбор провайдера<a class="headerlink" href="#id1" title="Ссылка на этот заголовок"></a></h2>
+<h2>1. Выбор провайдера<a class="headerlink" href="#id1" title="Ссылка на этот заголовок">¶</a></h2>
 <p>Лучше всего выбирать ближайшую локацию сервера — будет выше скорость работы.
 Для легких проектов будет достаточно 1 ГБ ОЗУ объема RAM и CPU.
 Обязательно наличие SSH-доступа, обычно он включен по умолчанию.</p>
 </section>
 <section id="id2">
-<h2>2. Регистрация<a class="headerlink" href="#id2" title="Ссылка на этот заголовок"></a></h2>
+<h2>2. Регистрация<a class="headerlink" href="#id2" title="Ссылка на этот заголовок">¶</a></h2>
 <ul class="simple">
 <li><p>Создать новый сервер (обычно кнопки <em>Create Droplet</em>, <em>New Instance</em> или <em>Create Server</em>).</p></li>
 <li><p>Выбрать операционную систему — самая стабильная и популярная Ubuntu 22.04 LTS.</p></li>
@@ -104,69 +151,69 @@
 </ul>
 </section>
 <section id="ssh">
-<h2>3. Подключение к серверу по <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a><a class="headerlink" href="#ssh" title="Ссылка на этот заголовок"></a></h2>
+<h2>3. Подключение к серверу по <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a><a class="headerlink" href="#ssh" title="Ссылка на этот заголовок">¶</a></h2>
 <ul>
 <li><p>Добавить публичный ключ на VPS-сервер для user.</p></li>
 <li><p>Ввести команду в терминале:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">root</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">ssh</span> <span class="n">root</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
+</span></pre></div>
 </div>
 </li>
 </ul>
 <p>После входа под root-правами нужно сделать первичную настройку:</p>
 <ul>
 <li><p>Обновить пакеты:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">apt</span> <span class="n">update</span> <span class="o">&amp;&amp;</span> <span class="n">apt</span> <span class="n">upgrade</span> <span class="o">-</span><span class="n">y</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Добавить нового пользователя (чтобы не работать напрямую от root):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">adduser</span> <span class="n">user</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">adduser</span> <span class="n">user</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Задать пароль и подтвердить. Дать права администратора:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="n">admin</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">usermod</span> <span class="o">-</span><span class="n">aG</span> <span class="n">sudo</span> <span class="n">admin</span>
+</span></pre></div>
 </div>
 </li>
 </ul>
 </section>
 <section id="id3">
-<h2>4. Настроить <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a> для нового пользователя<a class="headerlink" href="#id3" title="Ссылка на этот заголовок"></a></h2>
+<h2>4. Настроить <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a> для нового пользователя<a class="headerlink" href="#id3" title="Ссылка на этот заголовок">¶</a></h2>
 <ol class="arabic">
 <li><p>Открыть <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH-конфигурацию</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">sudo</span> <span class="n">nano</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">ssh</span><span class="o">/</span><span class="n">sshd_config</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Найти и изменить/добавить следующие параметры:</p></li>
 </ol>
 <ul>
 <li><p>Меняем стандартный порт (например, на 22222):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Port</span> <span class="mi">22222</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">Port</span> <span class="mi">22222</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Запрещаем вход под root:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PermitRootLogin</span> <span class="n">no</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">PermitRootLogin</span> <span class="n">no</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>В <cite>/etc/ssh/sshd_config</cite> разрешаем вход только по ключу (без пароля):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">PasswordAuthentication</span> <span class="n">no</span>
-<span class="n">PubkeyAuthentication</span> <span class="n">yes</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">PasswordAuthentication</span> <span class="n">no</span>
+</span><span data-line="2"><span class="n">PubkeyAuthentication</span> <span class="n">yes</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Разрешаем только нашего пользователя (опционально):</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">AllowUsers</span> <span class="n">user</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">AllowUsers</span> <span class="n">user</span>
+</span></pre></div>
 </div>
 </li>
 <li><p>Перезапустить <a class="reference internal" href="../ssh/best_practices.html#create-ssh"><span class="std std-ref">SSH</span></a>:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">ssh</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">sudo</span> <span class="n">systemctl</span> <span class="n">restart</span> <span class="n">ssh</span>
+</span></pre></div>
 </div>
 </li>
 </ul>
@@ -176,43 +223,50 @@
 </div>
 <ul>
 <li><p>Проверить соединение. Выйти из сервера (exit) и подключиться заново:</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">ssh</span> <span class="n">admin</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
-</pre></div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span data-line="1"><span class="n">ssh</span> <span class="n">admin</span><span class="o">@&lt;</span><span class="n">IP_сервера</span><span class="o">&gt;</span>
+</span></pre></div>
 </div>
 </li>
 </ul>
-<p>Если все работает — значит сервер готов к использованию.</p>
+<p>Если все работает — значит, сервер готов к использованию.</p>
 </section>
 </section>
 
-
-           </div>
-          </div>
-          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Нижняя область">
-        <a href="overview.html" class="btn btn-neutral float-left" title="Для чего используется VPS?" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Предыдущая</a>
+        </article><button class="back-to-top" type="button">
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+    <path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12z"></path>
+  </svg>
+  <span>Back to top</span>
+</button><div class="navigation flex print:hidden"><div class="navigation-prev">
+    <a href="overview.html">
+      <i class="i-lucide chevron-left"></i>
+      <div class="page-info">
+        <span>Previous</span><div class="title">Для чего используется VPS?</div></div>
+    </a>
+  </div></div></div>
     </div>
-
-  <hr/>
-
-  <div role="contentinfo">
-    <p>&#169; Авторские права 2025, Anastasia Pchela. </p>
+  </main>
+</div>
+<footer class="sy-foot">
+  <div class="sy-foot-inner sy-container mx-auto">
+    <div class="sy-foot-reserved md:flex justify-between items-center">
+      <div class="sy-foot-copyright"><p>2025, Anastasia Pchela</p>
+  
+  <p>
+    Made with
+    
+    <a href="https://www.sphinx-doc.org/">Sphinx</a> and
+    
+    <a href="https://shibuya.lepture.com">Shibuya theme</a>.
+  </p>
+</div>
+      <div class="sy-foot-socials"></div>
+    </div>
   </div>
-
-  Собрано при помощи <a href="https://www.sphinx-doc.org/">Sphinx</a> с использованием
-    <a href="https://github.com/readthedocs/sphinx_rtd_theme">темы,</a>
-    предоставленной <a href="https://readthedocs.org">Read the Docs</a>.
-   
-
 </footer>
-        </div>
-      </div>
-    </section>
-  </div>
-  <script>
-      jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
-      });
-  </script> 
-
-</body>
+      <script src="../../_static/documentation_options.js?v=e35015f7"></script>
+      <script src="../../_static/doctools.js?v=9bcbadda"></script>
+      <script src="../../_static/sphinx_highlight.js?v=dc90522c"></script>
+      <script src="../../_static/translations.js?v=cd1d70c9"></script>
+      <script src="../../_static/shibuya.js?v=e730760c"></script></body>
 </html>
