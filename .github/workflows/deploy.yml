@@ -2,66 +2,50 @@ name: Deploy Sphinx docs to GitHub Pages
 
 on:
   push:
-    branches: [main]
+    branches: [ main ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
 
 jobs:
-  build-and-deploy:
+  build:
     runs-on: ubuntu-latest
     steps:
-      - name: "🔍 CHECKOUT REPOSITORY"
+      - name: Checkout repository
         uses: actions/checkout@v4
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
-          fetch-depth: 0
 
-      - name: "🐍 SETUP PYTHON"
-        uses: actions/setup-python@v4
+      - name: Setup Python
+        uses: actions/setup-python@v5
         with:
           python-version: '3.x'
 
-      - name: "📦 INSTALL DEPENDENCIES"
+      - name: Install dependencies
         run: |
-          echo "=== INSTALLING DEPENDENCIES ==="
           python -m pip install --upgrade pip
-          echo "✅ Pip upgraded"
-          pip install sphinx ghp-import
-          echo "✅ Sphinx and ghp-import installed"
-          pip list | grep -E "(sphinx|ghp)"
+          pip install sphinx
 
-      - name: "🏗️ BUILD DOCUMENTATION"
+      - name: Build Sphinx documentation
         run: |
-          echo "=== BUILDING SPHINX DOCUMENTATION ==="
-          echo "Current directory: $(pwd)"
-          echo "Directory contents:"
-          ls -la
-          echo "Building HTML documentation..."
-          sphinx-build -b html . _build/html -v
-          echo "✅ Build completed"
-          echo "Build directory contents:"
-          ls -la _build/html/ | head -10
+          sphinx-build -b html . _build/html
 
-      - name: "🚀 DEPLOY TO GITHUB PAGES"
-        run: |
-          echo "=== DEPLOYING TO GITHUB PAGES ==="
-          echo "Setting up git config..."
-          git config --global user.name "github-actions[bot]"
-          git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          
-          echo "Current branch: $(git branch --show-current)"
-          echo "Remote branches:"
-          git branch -r
-          
-          echo "Deploying with ghp-import..."
-          ghp-import -n -p -f _build/html
-          
-          echo "✅ DEPLOYMENT COMPLETED SUCCESSFULLY"
+      - name: Setup Pages
+        id: pages
+        uses: actions/configure-pages@v5
 
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: _build/html
 
-      - name: "✅ VERIFY DEPLOYMENT"
-        run: |
-          echo "=== DEPLOYMENT VERIFICATION ==="
-          echo "Workflow completed at: $(date)"
-          echo "Documentation should be available at:"
-          echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v4
