@@ -8,27 +8,60 @@ jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout repository
+      - name: "🔍 CHECKOUT REPOSITORY"
         uses: actions/checkout@v4
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          fetch-depth: 0
 
-      - name: Setup Python
+      - name: "🐍 SETUP PYTHON"
         uses: actions/setup-python@v4
         with:
           python-version: '3.x'
 
-      - name: Install dependencies
+      - name: "📦 INSTALL DEPENDENCIES"
         run: |
+          echo "=== INSTALLING DEPENDENCIES ==="
           python -m pip install --upgrade pip
+          echo "✅ Pip upgraded"
           pip install sphinx ghp-import
+          echo "✅ Sphinx and ghp-import installed"
+          pip list | grep -E "(sphinx|ghp)"
 
-      - name: Build Sphinx documentation
+      - name: "🏗️ BUILD DOCUMENTATION"
         run: |
-          sphinx-build -b html . _build/html
+          echo "=== BUILDING SPHINX DOCUMENTATION ==="
+          echo "Current directory: $(pwd)"
+          echo "Directory contents:"
+          ls -la
+          echo "Building HTML documentation..."
+          sphinx-build -b html . _build/html -v
+          echo "✅ Build completed"
+          echo "Build directory contents:"
+          ls -la _build/html/ | head -10
 
-      - name: Deploy to GitHub Pages
+      - name: "🚀 DEPLOY TO GITHUB PAGES"
         run: |
+          echo "=== DEPLOYING TO GITHUB PAGES ==="
+          echo "Setting up git config..."
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
+          
+          echo "Current branch: $(git branch --show-current)"
+          echo "Remote branches:"
+          git branch -r
+          
+          echo "Deploying with ghp-import..."
           ghp-import -n -p -f _build/html
+          
+          echo "✅ DEPLOYMENT COMPLETED SUCCESSFULLY"
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: "✅ VERIFY DEPLOYMENT"
+        run: |
+          echo "=== DEPLOYMENT VERIFICATION ==="
+          echo "Workflow completed at: $(date)"
+          echo "Documentation should be available at:"
+          echo "https://${{ github.repository_owner }}.github.io/${{ github.event.repository.name }}/"
