@@ -34,6 +34,25 @@ jobs:
         run: |
           sphinx-build -b html source _build/html
 
+      - name: DEBUG: Check what was built
+        run: |
+          echo "=== FULL BUILD DIRECTORY LISTING ==="
+          ls -la _build/html/
+          echo ""
+          echo "=== FIRST 10 LINES OF index.html ==="
+          head -10 _build/html/index.html
+          echo ""
+          echo "=== FILE SIZES ==="
+          du -sh _build/html/* | head -10
+          echo ""
+          echo "=== CHECK IF INDEX.HTML HAS CONTENT ==="
+          if [ -s "_build/html/index.html" ]; then
+            echo "✅ index.html exists and has content"
+            echo "File size: $(wc -c < _build/html/index.html) bytes"
+          else
+            echo "❌ index.html is empty or missing"
+          fi
+
       - name: Setup Pages
         id: pages
         uses: actions/configure-pages@v5
