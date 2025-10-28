@@ -28,5 +28,4 @@ html_theme = 'shibuya'
 # html_theme = 'sphinx_rtd_theme'
 
 html_static_path = ['_static']
-html_extra_path = ['_build/html']
 html_base_url = '/networks_sphinx/'
